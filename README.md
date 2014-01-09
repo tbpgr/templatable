@@ -117,7 +117,7 @@ line2:<%=placeholders[:param2]%>
   end
 
   def manufactured_param2
-    "ret1-#{@materials}"
+    "ret2-#{@materials}"
   end
 end
 ~~~
@@ -130,7 +130,7 @@ puts SampleUse.new("input").result
 output
 ~~~
 line1:ret1-input
-line2:ret1-input
+line2:ret2-input
 ~~~
 
 ## Notes
