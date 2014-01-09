@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require "templatable_core"
+require "templatable/version"
+require "thor"
+
+module Templatable
+  #= Templatable CLI
+  class CLI < Thor
+    class_option :help, :type => :boolean, :aliases => '-h', :desc => 'help message.'
+    class_option :version, :type => :boolean, :desc => 'version'
+
+    desc "execute", "generate parameter-template apply class."
+    def execute
+      Templatable::Core.new.execute
+    end
+
+    desc "init", "generate Templatablefile"
+    def init
+      Templatable::Core.new.init
+    end
+
+    desc "version", "version"
+    def version
+      p Templatable::VERSION
+    end
+  end
+end
+
+Templatable::CLI.start(ARGV)
