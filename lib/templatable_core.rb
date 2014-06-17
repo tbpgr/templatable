@@ -70,6 +70,7 @@ end
     end
 
     private
+
     def read_dsl
       File.open(TEMPLATABLE_FILE) { |f|f.read }
     end
