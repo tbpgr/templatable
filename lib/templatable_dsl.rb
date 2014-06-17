@@ -2,6 +2,7 @@
 require 'templatable_dsl_model'
 
 module Templatable
+  # Dsl
   class Dsl
     attr_accessor :templatable
 
