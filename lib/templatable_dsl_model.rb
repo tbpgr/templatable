@@ -7,19 +7,18 @@ module Templatable
 
     # output_fullpath
     attr_accessor :output_fullpath
-    validates :output_fullpath, :presence => true
+    validates :output_fullpath, presence: true
 
     # class_name
     attr_accessor :class_name
-    validates :class_name, :presence => true
+    validates :class_name, presence: true
 
     # template
     attr_accessor :template
-    validates :template, :presence => true
+    validates :template, presence: true
 
     # placeholders
     attr_accessor :placeholders
-    validates :placeholders, :presence => true
-
+    validates :placeholders, presence: true
   end
 end

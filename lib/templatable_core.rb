@@ -1,13 +1,13 @@
 # encoding: utf-8
 require 'templatable_dsl'
-require "active_support"
-require "erb"
+require 'active_support'
+require 'erb'
 
 module Templatable
   #  Templatable Core
   class Core
-    TEMPLATABLE_FILE = "Templatablefile"
-    TEMPLATABLE_TEMPLATE =<<-EOF
+    TEMPLATABLE_FILE = 'Templatablefile'
+    TEMPLATABLE_TEMPLATE = <<-EOF
 # encoding: utf-8
 
 # output_fullpath
@@ -55,7 +55,7 @@ end
 
     # generate Templatablefile to current directory.
     def init
-      File.open(TEMPLATABLE_FILE, "w") {|f|f.puts TEMPLATABLE_TEMPLATE}
+      File.open(TEMPLATABLE_FILE, 'w') { |f|f.puts TEMPLATABLE_TEMPLATE }
     end
 
     # generate TemplateApplayClass
@@ -66,12 +66,12 @@ end
       template = get_template dsl
       methods = get_methods dsl
       output_src = get_templatable_class_code(dsl.templatable.class_name.camelize, template.chop, methods)
-      File.open(dsl.templatable.output_fullpath, "w:UTF-8") {|f|f.print output_src}
+      File.open(dsl.templatable.output_fullpath, 'w:UTF-8') { |f|f.print output_src }
     end
 
     private
     def read_dsl
-      File.open(TEMPLATABLE_FILE) {|f|f.read}
+      File.open(TEMPLATABLE_FILE) { |f|f.read }
     end
 
     def get_template(dsl)
@@ -82,9 +82,9 @@ end
       ret = []
       dsl.templatable.placeholders.each do |placeholder|
         ret << "  def manufactured_#{placeholder}"
-        ret << "    # TODO: implement your logic"
-        ret << "  end"
-        ret << ""
+        ret << '    # TODO: implement your logic'
+        ret << '  end'
+        ret << ''
       end
       ret.join("\n").chop
     end

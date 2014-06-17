@@ -8,14 +8,14 @@ module Templatable
     # String Define
     [:output_fullpath, :class_name, :template].each do |f|
       define_method f do |value|
-        eval "@templatable.#{f.to_s} = '#{value}'", binding
+        eval "@templatable.#{f} = '#{value}'", binding
       end
     end
 
     # Array/Hash/Boolean Define
     [:placeholders].each do |f|
       define_method f do |value|
-        eval "@templatable.#{f.to_s} = #{value}", binding
+        eval "@templatable.#{f} = #{value}", binding
       end
     end
 

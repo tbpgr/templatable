@@ -1,6 +1,6 @@
 # encoding: utf-8
-require "spec_helper"
-require "templatable_core"
+require 'spec_helper'
+require 'templatable_core'
 
 describe Templatable::Core do
 
@@ -35,20 +35,20 @@ describe Templatable::Core do
       end
 
       def case_before(c)
-        Dir.mkdir(OUTPUT_DSL_TMP_DIR) unless Dir.exists? OUTPUT_DSL_TMP_DIR
+        Dir.mkdir(OUTPUT_DSL_TMP_DIR) unless Dir.exist? OUTPUT_DSL_TMP_DIR
         Dir.chdir(OUTPUT_DSL_TMP_DIR)
       end
 
       def case_after(c)
         Dir.chdir('../')
-        FileUtils.rm_rf(OUTPUT_DSL_TMP_DIR) if Dir.exists? OUTPUT_DSL_TMP_DIR
+        FileUtils.rm_rf(OUTPUT_DSL_TMP_DIR) if Dir.exist? OUTPUT_DSL_TMP_DIR
       end
     end
   end
 
   context :execute do
     OUTPUT_TEMPLATABLE_TMP_DIR = 'tmp_templatable'
-    TEMPLATABLE_CASE1 =<<-EOF
+    TEMPLATABLE_CASE1 = <<-EOF
 # encoding: utf-8
 output_fullpath "./sample_use.rb"
 
@@ -64,7 +64,7 @@ template TEMPLATE
 placeholders ["param1", "param2"]
     EOF
 
-    RESULT_CASE1 =<<-EOF
+    RESULT_CASE1 = <<-EOF
 # encoding: utf-8
 require 'templatable'
 
@@ -88,8 +88,8 @@ end
     cases = [
       {
         case_no: 1,
-        case_title: "valid case",
-        output_file: "sample_use.rb",
+        case_title: 'valid case',
+        output_file: 'sample_use.rb',
         templatablefile: TEMPLATABLE_CASE1,
         expected: RESULT_CASE1,
       },
@@ -107,7 +107,7 @@ end
           templatable_core.execute
 
           # -- then --
-          actual_exists = File.exists? c[:output_file]
+          actual_exists = File.exist? c[:output_file]
           expect(actual_exists).to be_true
           actual_contents = File.read c[:output_file]
           expect(actual_contents).to eq(c[:expected])
@@ -117,14 +117,14 @@ end
       end
 
       def case_before(c)
-        Dir.mkdir(OUTPUT_TEMPLATABLE_TMP_DIR) unless Dir.exists? OUTPUT_TEMPLATABLE_TMP_DIR
+        Dir.mkdir(OUTPUT_TEMPLATABLE_TMP_DIR) unless Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
         Dir.chdir(OUTPUT_TEMPLATABLE_TMP_DIR)
         File.open(Templatable::Core::TEMPLATABLE_FILE, 'w') { |f|f.print c[:templatablefile] }
       end
 
       def case_after(c)
         Dir.chdir('../')
-        FileUtils.rm_rf(OUTPUT_TEMPLATABLE_TMP_DIR) if Dir.exists? OUTPUT_TEMPLATABLE_TMP_DIR
+        FileUtils.rm_rf(OUTPUT_TEMPLATABLE_TMP_DIR) if Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
       end
     end
   end
