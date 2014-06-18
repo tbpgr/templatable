@@ -11,8 +11,8 @@ describe Templatable::Core do
         case_no: 1,
         case_title: 'valid case',
         expected_file: Templatable::Core::TEMPLATABLE_FILE,
-        expected_content: Templatable::Core::TEMPLATABLE_TEMPLATE,
-      },
+        expected_content: Templatable::Core::TEMPLATABLE_TEMPLATE
+      }
     ]
 
     cases.each do |c|
@@ -91,8 +91,8 @@ end
         case_title: 'valid case',
         output_file: 'sample_use.rb',
         templatablefile: TEMPLATABLE_CASE1,
-        expected: RESULT_CASE1,
-      },
+        expected: RESULT_CASE1
+      }
     ]
 
     cases.each do |c|
