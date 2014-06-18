@@ -117,14 +117,20 @@ end
       end
 
       def case_before(c)
-        Dir.mkdir(OUTPUT_TEMPLATABLE_TMP_DIR) unless Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
+        unless Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
+          Dir.mkdir(OUTPUT_TEMPLATABLE_TMP_DIR)
+        end
         Dir.chdir(OUTPUT_TEMPLATABLE_TMP_DIR)
-        File.open(Templatable::Core::TEMPLATABLE_FILE, 'w') { |f|f.print c[:templatablefile] }
+        File.open(Templatable::Core::TEMPLATABLE_FILE, 'w') do |f|
+          f.print c[:templatablefile]
+        end
       end
 
       def case_after(c)
         Dir.chdir('../')
-        FileUtils.rm_rf(OUTPUT_TEMPLATABLE_TMP_DIR) if Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
+        if Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
+          FileUtils.rm_rf(OUTPUT_TEMPLATABLE_TMP_DIR)
+        end
       end
     end
   end

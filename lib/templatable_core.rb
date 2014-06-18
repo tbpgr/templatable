@@ -65,8 +65,11 @@ end
       dsl.instance_eval src
       template = get_template dsl
       methods = get_methods dsl
-      output_src = get_templatable_class_code(dsl.templatable.class_name.camelize, template.chop, methods)
-      File.open(dsl.templatable.output_fullpath, 'w:UTF-8') { |f|f.print output_src }
+      output_src = get_templatable_class_code(
+        dsl.templatable.class_name.camelize, template.chop, methods)
+      File.open(dsl.templatable.output_fullpath, 'w:UTF-8') do |f|
+        f.print output_src
+      end
     end
 
     private
@@ -76,7 +79,9 @@ end
     end
 
     def get_template(dsl)
-      dsl.templatable.template.gsub(/<%=/, "<%=placeholders\[:").gsub(/%>/, "\]%>")
+      dsl.templatable.template
+        .gsub(/<%=/, "<%=placeholders\[:")
+        .gsub(/%>/, "\]%>")
     end
 
     def get_methods(dsl)
