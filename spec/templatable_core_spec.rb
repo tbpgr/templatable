@@ -34,12 +34,12 @@ describe Templatable::Core do
         end
       end
 
-      def case_before(c)
+      def case_before(c) # rubocop:disable UnusedMethodArgument
         Dir.mkdir(OUTPUT_DSL_TMP_DIR) unless Dir.exist? OUTPUT_DSL_TMP_DIR
         Dir.chdir(OUTPUT_DSL_TMP_DIR)
       end
 
-      def case_after(c)
+      def case_after(c) # rubocop:disable UnusedMethodArgument
         Dir.chdir('../')
         FileUtils.rm_rf(OUTPUT_DSL_TMP_DIR) if Dir.exist? OUTPUT_DSL_TMP_DIR
       end
@@ -116,7 +116,7 @@ end
         end
       end
 
-      def case_before(c)
+      def case_before(c) # rubocop:disable UnusedMethodArgument
         unless Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
           Dir.mkdir(OUTPUT_TEMPLATABLE_TMP_DIR)
         end
@@ -126,7 +126,7 @@ end
         end
       end
 
-      def case_after(c)
+      def case_after(c) # rubocop:disable UnusedMethodArgument
         Dir.chdir('../')
         if Dir.exist? OUTPUT_TEMPLATABLE_TMP_DIR
           FileUtils.rm_rf(OUTPUT_TEMPLATABLE_TMP_DIR)

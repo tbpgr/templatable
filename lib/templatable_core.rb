@@ -95,7 +95,7 @@ end
       ret.join("\n").chop
     end
 
-    def get_templatable_class_code(class_name, template, methods)
+    def get_templatable_class_code(class_name, template, methods) # rubocop:disable LineLength, UnusedMethodArgument
       erb = ERB.new(CLASS_TEMPLATE)
       erb.result(binding)
     end
