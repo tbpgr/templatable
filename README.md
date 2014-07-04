@@ -1,5 +1,7 @@
 # Templatable
 
+[![Gem Version](https://badge.fury.io/rb/templatable.svg)](http://badge.fury.io/rb/templatable)
+
 Templatable is CLI tool that generate ruby-source-code using ERB template.
 
 ## Installation
